@@ -29,12 +29,14 @@ const readAndAppend = (content, file) => {
     err ? console.error(err) : console.info(`\nData written to ${destination}`)
   );
 
+  // const readFromFile = util.promisify(fs.readFile);
+
 // Get all notes
 app.get('/api/notes', (req, res) => {
     res.json(notes)
 })
 // // Get single note
-app.get('api/notes/:id', (req, res) => {
+app.get('/api/notes/:id', (req, res) => {
     // const found = notes.some(note => note.id === parseInt(req.params.id))
     // // console.log(found)
 
@@ -45,15 +47,25 @@ app.get('api/notes/:id', (req, res) => {
     //     res.status(400).json({msg: `No results for ${req.params.id}`})
     // }
 
+    let idDisplay = ''
+
     const noteId = req.params.id
-    readFromFile('./db/db.json')
-        .then((data) => JSON.parse(data))
-        .then((json) => {
-            const result = json.filter((note) => note.id !== noteId)
-            return result.length > 0
-                ? res.json(result)
-                : res.json('No tip with that ID')
-        })
+    console.log(noteId)
+    console.log(notes)
+    // readFromFile('./db/db.json')
+    //     .then((data) => JSON.parse(data))
+    //     .then((json) => {
+    //         const result = json.filter((note) => note.id !== noteId)
+    //         return result.length > 0
+    //             ? res.json(result)
+    //             : res.json('No tip with that ID')
+    //     })
+    for(let i = 0; i < notes.length; i++) {
+      console.log(notes[i].id)
+      if(noteId == notes[i].id) {
+        res.json(notes[i])
+       } 
+    }
 
 })
 
@@ -61,11 +73,11 @@ app.post('/', (req, res) => {
     console.log(req.body);
     const randomNumber = uuidv4()
   
-    const { id, title, text } = req.body;
+    const { title, text } = req.body;
   
     if (req.body) {
       const newNote = {
-        randomNumber,
+        id: randomNumber,
         title,
         text,
       };
