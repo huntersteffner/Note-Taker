@@ -33,6 +33,9 @@ const readAndAppend = (content, file) => {
 
 // Get all notes
 app.get('/api/notes', (req, res) => {
+  let database = fs.readFileSync('./db/db.json')
+  database = JSON.parse(database)
+  console.table(database)
     res.json(notes)
 })
 // // Get single note
@@ -52,14 +55,8 @@ app.get('/api/notes/:id', (req, res) => {
     const noteId = req.params.id
     console.log(noteId)
     console.log(notes)
-    // readFromFile('./db/db.json')
-    //     .then((data) => JSON.parse(data))
-    //     .then((json) => {
-    //         const result = json.filter((note) => note.id !== noteId)
-    //         return result.length > 0
-    //             ? res.json(result)
-    //             : res.json('No tip with that ID')
-    //     })
+    
+
     for(let i = 0; i < notes.length; i++) {
       console.log(notes[i].id)
       if(noteId == notes[i].id) {
@@ -67,9 +64,11 @@ app.get('/api/notes/:id', (req, res) => {
        } 
     }
 
+
+
 })
 
-app.post('/', (req, res) => {
+app.post('/api/notes', (req, res) => {
     console.log(req.body);
     const randomNumber = uuidv4()
   
@@ -87,7 +86,22 @@ app.post('/', (req, res) => {
     } else {
       res.error('Error in adding note');
     }
+    
   });
+
+  app.delete('/api/notes/:id', (req, res) => {
+    const found = notes.some(note => note.id === req.params.id)
+    if(!found) {
+      res.status(400).json({msg: `ID ${req.params.id} not found`})
+    } else {
+      const newNotes = notes.filter(note => note.id != req.params.id)
+      fs.writeFile('./db/db.json', JSON.stringify(newNotes), 'utf8', (err) => {
+        err ? console.error(err) : console.info(`\n${req.params.id} Deleted`)
+      })
+      res.json(notes)
+    }
+
+  })
 
 
 app.use(express.static('public'))
