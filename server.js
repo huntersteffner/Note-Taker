@@ -11,7 +11,7 @@ const app = express()
 
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
-
+const readFileAsync = util.promisify(fs.readFile)
 const readAndAppend = (content, file) => {
     fs.readFile(file, 'utf8', (err, data) => {
       if (err) {
@@ -33,10 +33,14 @@ const readAndAppend = (content, file) => {
 
 // Get all notes
 app.get('/api/notes', (req, res) => {
-  let database = fs.readFileSync('./db/db.json')
-  database = JSON.parse(database)
-  console.table(database)
-    res.json(notes)
+  let database = readFileAsync('./db/db.json', 'utf8')
+  .then( (database) => {
+
+    database = JSON.parse(database)
+      res.json(notes)
+  }
+
+  )
 })
 // // Get single note
 app.get('/api/notes/:id', (req, res) => {
@@ -100,7 +104,7 @@ app.post('/api/notes', (req, res) => {
       })
       res.json(notes)
     }
-
+    
   })
 
 
