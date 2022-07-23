@@ -1,62 +1,22 @@
 [
     {
-        "id": 1,
-        "title": "Test Title",
-        "text": "Test text"
+        "id": "83dd45a4-6eb6-48c5-97ba-2ccdb9dbdda4",
+        "title": "Go to post office",
+        "text": "Drop off package"
     },
     {
-        "id": "5bdf8df7-e0b2-42e1-a692-b6f1342eb6a5",
-        "title": "fawefwe",
-        "text": "awfeawe"
+        "id": "7e79d08a-5c52-42af-8767-7f5f7672f0e6",
+        "title": "Call plumber",
+        "text": "Broken sink"
     },
     {
-        "id": "9fbf4701-081e-49d6-adb0-2f3d756dbb30",
-        "title": "faweawef",
-        "text": "afwewe"
+        "id": "80f08b16-557a-4ddc-8200-0c95d8c12204",
+        "title": "Sister's birthday",
+        "text": "08/23/2022"
     },
     {
-        "id": "7a6b947f-41fe-4257-8a4a-39a97c78cd3d",
-        "title": "awfe",
-        "text": "afwe"
-    },
-    {
-        "id": "ae725b1a-082e-4f82-9489-39abd0a535e6",
-        "title": "dsaojio",
-        "text": "awfawef"
-    },
-    {
-        "id": "be1f34ae-13a3-4a1b-925d-a9732ff3260b",
-        "title": "feawwe",
-        "text": "afawefe"
-    },
-    {
-        "id": "ae0c9033-a539-4408-a6d5-49a680722404",
-        "title": "afwawef",
-        "text": "afawewef"
-    },
-    {
-        "id": "f265cb15-3179-459d-9757-f9426898df35",
-        "title": "Hunter",
-        "text": "Steffner"
-    },
-    {
-        "id": "f7ec1373-3f9c-4154-b978-38b56186bc6e",
-        "title": "Toe",
-        "text": "Nail"
-    },
-    {
-        "id": "f4f56688-0934-42b6-b288-85bbba444206",
-        "title": "Testing",
-        "text": "123"
-    },
-    {
-        "id": "db6d8dd8-4782-47bc-99fc-fa8399975869",
-        "title": "awfe",
-        "text": "awfe"
-    },
-    {
-        "id": "bf6bdfcb-8686-485b-bad7-2a3ccf4ea1c6",
-        "title": "awef",
-        "text": "awfe"
+        "id": "4c3ed6d6-1928-4f2e-8788-e9969bddabfd",
+        "title": "Complete Biology HW",
+        "text": "Due next Tuesday"
     }
 ]
