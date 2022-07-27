@@ -28,12 +28,7 @@ const readAndAppend = (content, file) => {
   );
 // Get all notes
 app.get('/api/notes', (req, res) => {
-  let database = readFileAsync('./db/db.json', 'utf8')
-  .then( (database) => {
-    database = JSON.parse(database)
-      res.json(notes)
-  }
-  )
+  readFileAsync('./db/db.json', 'utf8').then( (data) => res.json (JSON.parse(data)))
 })
 // // Get single note
 app.get('/api/notes/:id', (req, res) => {
@@ -70,7 +65,6 @@ app.post('/api/notes', (req, res) => {
       fs.writeFile('./db/db.json', JSON.stringify(newNotes), 'utf8', (err) => {
         err ? console.error(err) : console.info(`\n${req.params.id} Deleted`)
       })
-      res.json(notes)
     }
   })
 // Linking html pages to different URL paths
